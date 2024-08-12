@@ -27,9 +27,23 @@ fn generate_password(length: u8, lower: bool, upper: bool, number: bool, symbol:
     return password;
 }
 
+#[tauri::command]
+fn open_github() -> () {
+    let _ = open::that("https://github.com/JerimiahOfficial");
+}
+
+#[tauri::command]
+fn copy_to_clipboard(_string: String) -> () {
+    println!("This command is currently W.I.P")
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![generate_password])
+        .invoke_handler(tauri::generate_handler![
+            generate_password,
+            open_github,
+            copy_to_clipboard
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
