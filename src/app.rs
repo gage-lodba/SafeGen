@@ -6,13 +6,8 @@ use yew::prelude::*;
 
 #[wasm_bindgen]
 extern "C" {
-    #[wasm_bindgen(js_namespace = ["window", "__TAURI__", "tauri"])]
+    #[wasm_bindgen(js_namespace = ["window", "__TAURI__", "core"])]
     async fn invoke(cmd: &str, args: JsValue) -> JsValue;
-}
-
-#[derive(Serialize, Deserialize)]
-struct GreetArgs<'a> {
-    name: &'a str,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -22,6 +17,12 @@ struct GeneratorArgs {
     lower: bool,
     number: bool,
     symbol: bool,
+}
+
+#[derive(Serialize, Deserialize)]
+struct CopyArgs {
+    label: String,
+    text: String,
 }
 
 #[function_component(App)]
@@ -138,7 +139,16 @@ pub fn app() -> Html {
                     .unwrap()
                     .value();
 
-                invoke("copy_to_clipboard", JsValue::from_str(&password)).await;
+                let args = CopyArgs {
+                    label: "Test".to_string(),
+                    text: password.clone(),
+                };
+
+                invoke(
+                    "plugin:clipboard-manager|write_text",
+                    to_value(&args).unwrap(),
+                )
+                .await;
             });
         })
     };
@@ -179,8 +189,8 @@ pub fn app() -> Html {
             <input type="text" ref={password_input} id="Password" placeholder="Generated password" readonly=true />
 
             <div>
-                <input type="button" value="Generate" id="Generate" onclick={generate_password}/>
-                <input type="button" value="Copy (Doesn't work yet)" id="Copy" onclick={copy_to_clipboard}/>
+                <input type="button" onclick={generate_password} value="Generate" />
+                <input type="button" onclick={copy_to_clipboard} value="Copy" />
             </div>
 
             <label id="PassLen" for="length" ref={length_label}>{"Password Length: 25"}</label>

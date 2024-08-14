@@ -1,5 +1,5 @@
 # SafeGen
-A simply and easy to use password generator written in rust.
+A simple easy to use password generator written in rust. Can endlessly generate strong passwords for optimal security.
 
 ### Dependencies:
 [Rust compiler](https://www.rust-lang.org/)
@@ -7,5 +7,5 @@ A simply and easy to use password generator written in rust.
 ### Testing
 To test the program run `cargo tauri dev`
 
-### Buiding
+### Building
 Simply run `cargo build`
