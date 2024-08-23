@@ -185,7 +185,7 @@ pub fn app() -> Html {
     };
 
     html! {
-        <main>
+        <>
             <input type="text" ref={password_input} id="Password" placeholder="Generated password" readonly=true />
 
             <div>
@@ -193,8 +193,8 @@ pub fn app() -> Html {
                 <input type="button" onclick={copy_to_clipboard} value="Copy" />
             </div>
 
-            <label id="PassLen" for="length" ref={length_label}>{"Password Length: 25"}</label>
-            <input id="length" type="range" min="10" max="50" value="25" class="slider" id="myRange" ref={length_input} oninput={update_length}/>
+            <label for="length" ref={length_label}>{"Password Length: 30"}</label>
+            <input type="range" id="length" min="10" max="50" value="30" class="slider" ref={length_input} oninput={update_length}/>
 
             <div>
                 <label class="container">{"A-Z"}
@@ -222,6 +222,6 @@ pub fn app() -> Html {
             <textarea id="Notes" ref={history_input} rows="19" readonly=true></textarea>
 
             <input type="image" src="public/github.svg" id="Github" onclick={open_github} />
-        </main>
+        </>
     }
 }

@@ -17,41 +17,26 @@
 :root {
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
-  font-weight: 400;
-
-  line-height: 24px;
 
   color: #ffffff;
   background-color: rgb(24, 24, 24);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-
-  width: 100vw;
-
-  overflow: hidden;
-}
-
-main {
   display: flex;
   flex-wrap: wrap;
 
   gap: 10px;
-
   padding: 10px;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
 }
 
-
 input {
-  flex-basis: 100%;
+  appearance: none;
 
   border: none;
   border-radius: 8px;
@@ -68,6 +53,11 @@ input {
   height: 30px;
 }
 
+input[type="range"],
+input[type="text"] {
+  flex-basis: 100%;
+}
+
 input:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -78,47 +68,13 @@ input:active {
 
 div {
   display: flex;
-
-  flex-basis: 100%;
+  flex: 1 1 100%;
 
   gap: 10px;
 }
 
-div label {
-  flex-basis: 100%;
-}
-
-div:first-of-type input {
+div input {
   flex-basis: 50%;
-}
-
-.slider {
-  display: flex;
-  appearance: none;
-
-  height: 30px;
-
-  margin: 0px;
-  padding: 0px;
-
-  background-color: rgba(255, 255, 255, 0.05);
-  outline: none;
-}
-
-.slider:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-
-  width: 30px;
-  height: 30px;
-
-  background: #ffffff;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
 textarea {
@@ -155,13 +111,20 @@ textarea:active {
 
   background-color: white;
   background-clip: padding-box;
-
-  margin: 2px;
-  margin-block: 5px;
 }
 
-#Github {
-  flex: 0 0 0px;
+::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 30px;
+  height: 30px;
+
+  background: #ffffff;
+
+  border: none;
+  border-radius: 8px;
+  outline: none;
 }
 
 /*
@@ -176,7 +139,7 @@ Check box stuff
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  /* font-size: 22px; */
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -186,7 +149,9 @@ Check box stuff
 .container input {
   position: absolute;
   opacity: 0;
+
   cursor: pointer;
+
   height: 0;
   width: 0;
 }
