@@ -125,6 +125,30 @@ pub fn app() -> Html {
         })
     };
 
+    let clear_history = {
+        let history_input = history_input.clone();
+        let password_input = password_input.clone();
+
+        Callback::from(move |e: MouseEvent| {
+            e.prevent_default();
+
+            let history_input = history_input.clone();
+            let password_input = password_input.clone();
+
+            spawn_local(async move {
+                password_input
+                    .cast::<web_sys::HtmlTextAreaElement>()
+                    .unwrap()
+                    .set_value("");
+
+                history_input
+                    .cast::<web_sys::HtmlTextAreaElement>()
+                    .unwrap()
+                    .set_value("");
+            });
+        })
+    };
+
     let copy_to_clipboard = {
         let password_input = password_input.clone();
 
@@ -222,6 +246,7 @@ pub fn app() -> Html {
             <textarea id="Notes" ref={history_input} rows="19" readonly=true></textarea>
 
             <input type="image" src="public/github.svg" id="Github" onclick={open_github} />
+            <input type="button" id="Clear" value="Clear history" onclick={clear_history}/>
         </>
     }
 }

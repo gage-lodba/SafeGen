@@ -26,7 +26,12 @@ fn generate_password(length: u8, lower: bool, upper: bool, number: bool, symbol:
 
 #[tauri::command]
 fn open_github() -> () {
-    let _ = open::that("https://github.com/JerimiahOfficial");
+    let url = "https://github.com/JerimiahOfficial";
+
+    match open::that(url) {
+        Ok(()) => println!("Opened '{}' successfully.", url),
+        Err(err) => panic!("An error occurred when opening '{}': {}", url, err),
+    }
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
