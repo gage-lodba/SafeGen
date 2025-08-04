@@ -115,7 +115,7 @@ pub fn app() -> Html {
                     .trim()
                     .to_string();
 
-                let new_history = format!("{}\n{}", password, history);
+                let new_history = format!("{password}\n{history}");
 
                 history_input
                     .cast::<web_sys::HtmlTextAreaElement>()
@@ -204,7 +204,7 @@ pub fn app() -> Html {
             length_label
                 .cast::<web_sys::HtmlInputElement>()
                 .unwrap()
-                .set_inner_text(&format!("Password Length: {}", length));
+                .set_inner_text(&format!("Password Length: {length}"));
         })
     };
 

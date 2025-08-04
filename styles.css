@@ -14,6 +14,11 @@
   padding: 0;
 
   box-sizing: border-box;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 :root {
@@ -73,9 +78,15 @@ div {
   flex: 1 1 100%;
 
   gap: 10px;
+
+  width: 100%;
 }
 
-div input {
+div input[type="button"] {
+  flex-basis: 50%;
+}
+
+div label {
   flex-basis: 50%;
 }
 
@@ -136,16 +147,10 @@ Check box stuff
 */
 
 .container {
-  display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
 
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  line-height: 25px;
 }
 
 .container input {

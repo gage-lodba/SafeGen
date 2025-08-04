@@ -1,15 +1,20 @@
-# SafeGen
-A simple easy to use password generator written in rust. Can endlessly generate strong passwords for optimal security.
+<div align="center">
+  <h1>SafeGen</h1>
+</div>
 
-### Dependencies:
-[Rust compiler](https://www.rust-lang.org/)
+A simple Rust-based password generator creating strong, secure passwords endlessly for optimal security.  
+
+<div align="center">
+  <img src="./assets/preview.png"/>
+</div>
 
 ### Prequisets
-`rustup target add wasm32-unknown-unknown`
-`cargo install trunk --locked`
+`rustup target add wasm32-unknown-unknown`  
+`cargo install trunk --locked`  
+`cargo install tauri-cli --version "^2.0.0" --locked`  
 
 ### Testing
-To test the program run `cargo tauri dev`
+`cargo tauri dev`
 
 ### Building
-Simply run `cargo build`
+`cargo tauri build`

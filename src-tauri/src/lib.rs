@@ -18,7 +18,7 @@ fn generate_password(length: u8, lower: bool, upper: bool, number: bool, symbol:
     .flat_map(|(set, _include)| set.chars());
 
     let password = (0..length)
-        .map(|_| chars_iter.clone().choose(&mut rand::thread_rng()).unwrap())
+        .map(|_| chars_iter.clone().choose(&mut rand::rng()).unwrap())
         .collect();
 
     return password;
@@ -26,12 +26,7 @@ fn generate_password(length: u8, lower: bool, upper: bool, number: bool, symbol:
 
 #[tauri::command]
 fn open_github() -> () {
-    let url = "https://github.com/JerimiahOfficial";
-
-    match open::that(url) {
-        Ok(()) => println!("Opened '{}' successfully.", url),
-        Err(err) => panic!("An error occurred when opening '{}': {}", url, err),
-    }
+    open::that("https://github.com/JerimiahOfficial").expect("Failed to open GitHub page");
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]

@@ -21,8 +21,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install Prequisites
+      run: |
+        rustup target add wasm32-unknown-unknown
+        cargo install trunk --locked
+        cargo install tauri-cli
+
     - name: Build
-      run: cargo build --verbose
+      run: cargo tauri build
       
-    - name: Run tests
-      run: cargo test --verbose
