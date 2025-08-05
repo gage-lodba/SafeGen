@@ -2,7 +2,16 @@ name: Build
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+    paths:
+      - '.github/workflows/Build.yml'
+      - 'src/**'
+      - 'src-tauri/**'
+      - 'Cargo.toml'
+      - 'index.html'
+      - 'style.css'
+      - 'trunk.toml'
 
 env:
   CARGO_TERM_COLOR: always
@@ -20,6 +29,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Ubuntu Prerequisites
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt update
+        sudo apt install -y libgtk2.0-dev libglib2.0-dev
 
     - name: Install Prequisites
       run: |

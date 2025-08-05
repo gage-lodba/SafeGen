@@ -8,6 +8,8 @@ A simple Rust-based password generator creating strong, secure passwords endless
   <img src="./assets/preview.png"/>
 </div>
 
+## Building
+
 ### Prequisets
 `rustup target add wasm32-unknown-unknown`  
 `cargo install trunk --locked`  
