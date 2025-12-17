@@ -26,7 +26,7 @@ fn generate_password(length: u8, lower: bool, upper: bool, number: bool, symbol:
 
 #[tauri::command]
 fn open_github() -> () {
-    open::that("https://github.com/JerimiahOfficial").expect("Failed to open GitHub page");
+    open::that("https://github.com/gage-lodba/SafeGen").expect("Failed to open GitHub page");
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
