@@ -9,7 +9,6 @@
     "core:app:default",
     "core:window:default",
     "core:window:allow-start-dragging",
-    "shell:allow-open",
     "clipboard-manager:allow-write-text"
   ]
 }

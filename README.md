@@ -10,7 +10,7 @@ A simple Rust-based password generator creating strong, secure passwords endless
 
 ## Building
 
-### Prequisets
+### Prerequisites
 `rustup target add wasm32-unknown-unknown`  
 `cargo install trunk --locked`  
 `cargo install tauri-cli --version "^2.0.0" --locked`  
